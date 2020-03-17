@@ -6,7 +6,7 @@ import android.os.Bundle;
 //import android.util.Log;
 import android.content.Intent;
 import android.net.Uri;
-//import android.view.KeyEvent;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebView;
@@ -16,7 +16,9 @@ public class MainActivity extends AppCompatActivity {
 
     private WebView webView;
 //    private String accessUrl = "https://akira-watson.com/";
-    private String accessUrl = "https://www.google.co.jp";
+//    private String accessUrl = "https://www.google.co.jp";
+private String accessUrl = "https://rocky-stream-71417.herokuapp.com/";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,23 +61,22 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-//        // buttonのクリックイベント
-//        Button button = this.findViewById(R.id.button);
-//        button.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                // ログ出力
-//                Log.d("debug","clicked!");
-//
-//                // ダイアログ表示
-//                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-//                builder
-//                        .setTitle(R.string.dialog_title)
-//                        .setMessage(R.string.dialog_message)
-//                        .show();
-//            }
-//        });
-
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // 戻るページがある場合
+        if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_BACK){
+            if(webView.canGoBack()){
+                webView.goBack();
+            }
+            else{
+                finish();
+            }
+            return true;
+        }
+
+        return super.onKeyDown(keyCode,  event);
+    }
+
 }
