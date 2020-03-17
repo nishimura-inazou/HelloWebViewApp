@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">HelloWebViewApp</string>
+    <string name="Button">Button</string>
+    <string name="dialog_title">test dialog</string>
+    <string name="dialog_message">test dialog message!</string>
+    <string name="button1">WebView</string>
+    <string name="button2">Browser</string>
 </resources>
